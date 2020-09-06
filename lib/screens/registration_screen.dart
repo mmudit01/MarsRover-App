@@ -25,7 +25,6 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
       body: ModalProgressHUD(
         inAsyncCall: showSpinner,
         child: Padding(
@@ -82,38 +81,6 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                         email: email, password: password);
 
                     if (newUser != null) {
-                      _firestore
-                          .collection('data')
-                          .document('user')
-                          .collection(email);
-                      _firestore.collection('user').document(email).setData({
-                        'sender': email,
-                        'uid': newUser.user.uid,
-                      });
-                      final users =
-                          await _firestore.collection('user').getDocuments();
-                      for (var user in users.documents) {
-                        if (user.data()['sender'] != email)
-                          _firestore
-                              .collection('user')
-                              .document(email)
-                              .collection(email)
-                              .document(user.data()['uid'])
-                              .setData({
-                            'sender': user.data()['sender'],
-                            'message': null,
-                          });
-                        _firestore
-                            .collection('user')
-                            .document(user.data()['sender'])
-                            .collection(user.data()['sender'])
-                            .document(newUser.user.uid)
-                            .setData({
-                          'sender': email,
-                          'message': null,
-                        });
-                      }
-
                       Navigator.pushNamed(context, MainPage.id);
                     }
                     setState(() {

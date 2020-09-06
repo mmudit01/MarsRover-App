@@ -19,6 +19,9 @@ const kMessageContainerDecoration = BoxDecoration(
 );
 
 const kTextFieldDecoration = InputDecoration(
+  hintStyle: TextStyle(
+    color: Colors.white,
+  ),
   hintText: 'Enter A value',
   contentPadding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
   border: OutlineInputBorder(
