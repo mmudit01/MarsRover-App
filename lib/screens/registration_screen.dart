@@ -9,6 +9,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 
 import 'package:modal_progress_hud/modal_progress_hud.dart';
 
+import 'MainScreen.dart';
+
 final _firestore = Firestore.instance;
 
 class RegistrationScreen extends StatefulWidget {
@@ -81,7 +83,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                         email: email, password: password);
 
                     if (newUser != null) {
-                      Navigator.pushNamed(context, MainPage.id);
+                      Navigator.pushNamed(context, MainScreen.id);
                     }
                     setState(() {
                       showSpinner = false;
