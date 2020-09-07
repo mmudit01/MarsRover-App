@@ -7,6 +7,8 @@ import 'package:mar_rover/PageResizing/WidgetResizing.dart';
 import 'package:http/http.dart' as http;
 import 'package:mar_rover/screens/welcome_screen.dart';
 
+int _i;
+
 class MainPage extends StatelessWidget {
   final String roverName;
   MainPage(this.roverName);
@@ -40,10 +42,17 @@ class MainPage extends StatelessWidget {
     final res = await http.get(
         'https://api.nasa.gov/mars-photos/api/v1/rovers/$roverName/photos?sol=${maxSol - i}&api_key=Wt4YzlVLV9JQ4HDEJ0UbOEiWM9wNrjj23TJxwVq9');
     // print(res.body);
+    // if ((jsonDecode(res.body))['photos'] == null) {
+    //   _i++;
+    //   getImages(_i);
+    // }
+
     final url = (jsonDecode(res.body))['photos'][0]['img_src'];
     final date = (jsonDecode(res.body))['photos'][0]['earth_date'];
     final sol = maxSol - i;
     print(sol);
+    print(date);
+    // _i = _i + (1);
     return Images(
       date: date,
       url: url,
@@ -53,6 +62,7 @@ class MainPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // _i = 0;
     return SafeArea(
       child: Scaffold(
         body: Container(
@@ -78,6 +88,7 @@ class Images extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // print(date);
     return Container(
       decoration: BoxDecoration(border: Border.all()),
       child: Column(

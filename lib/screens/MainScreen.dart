@@ -56,7 +56,15 @@ class _MainScreenState extends State<MainScreen> {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     GestureDetector(
-                      child: Container(child: Text('Curiosity')),
+                      child: Container(
+                        alignment: Alignment.center,
+                        height: 8 * boxSizeV,
+                        width: 100 / 3 * boxSizeH,
+                        child: Text('Curiosity'),
+                        decoration: BoxDecoration(
+                          color: i == 0 ? Colors.black : Colors.black26,
+                        ),
+                      ),
                       onTap: () {
                         print('object1');
                         setState(() {
@@ -65,7 +73,15 @@ class _MainScreenState extends State<MainScreen> {
                       },
                     ),
                     GestureDetector(
-                      child: Container(child: Text('Oppurtunity')),
+                      child: Container(
+                        alignment: Alignment.center,
+                        child: Text('Oppurtunity'),
+                        height: 8 * boxSizeV,
+                        width: 100 / 3 * boxSizeH,
+                        decoration: BoxDecoration(
+                          color: i == 1 ? Colors.black : Colors.black26,
+                        ),
+                      ),
                       onTap: () {
                         print('object2');
                         setState(() {
@@ -74,7 +90,15 @@ class _MainScreenState extends State<MainScreen> {
                       },
                     ),
                     GestureDetector(
-                      child: Container(child: Text('Spirit')),
+                      child: Container(
+                        alignment: Alignment.center,
+                        child: Text('Spirit'),
+                        height: 8 * boxSizeV,
+                        width: 100 / 3 * boxSizeH,
+                        decoration: BoxDecoration(
+                          color: i == 2 ? Colors.black : Colors.black26,
+                        ),
+                      ),
                       onTap: () {
                         print('object3');
                         setState(() {
